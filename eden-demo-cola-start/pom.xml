@@ -169,7 +169,7 @@
 		</dependency>
 
 		<!-- 线上诊断组件 -->
-		<!-- 推荐使用 https://github.com/shiyindaxiaojie/arthas/tree/master/tunnel-server2，支持服务发现 -->
+		<!-- 推荐使用 https://github.com/shiyindaxiaojie/arthas，支持服务发现 -->
 		<dependency>
 			<groupId>io.github.shiyindaxiaojie</groupId>
 			<artifactId>eden-arthas-spring-boot-starter</artifactId>
