@@ -30,6 +30,7 @@ import org.ylzl.eden.demo.client.user.dto.command.UserModifyCmd;
 import org.ylzl.eden.demo.client.user.dto.command.UserRemoveCmd;
 import org.ylzl.eden.demo.client.user.dto.query.UserByIdQry;
 import org.ylzl.eden.demo.client.user.dto.query.UserListByPageQry;
+import org.ylzl.eden.demo.infrastructure.user.rpc.InternalUserRpcClient;
 
 import javax.validation.Valid;
 
@@ -46,6 +47,8 @@ import javax.validation.Valid;
 public class UserController {
 
 	private final UserService userService;
+
+	private final InternalUserRpcClient userRpcClient;
 
 	/**
 	 * 创建用户
@@ -90,6 +93,7 @@ public class UserController {
 	 */
 	@GetMapping("/{id}")
 	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) {
+		userRpcClient.syncUser(null);
 		return userService.getUserById(UserByIdQry.builder().id(id).build());
 	}
 

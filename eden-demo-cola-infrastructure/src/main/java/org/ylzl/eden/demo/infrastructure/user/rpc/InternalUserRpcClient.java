@@ -2,7 +2,9 @@ package org.ylzl.eden.demo.infrastructure.user.rpc;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.dubbo.config.annotation.DubboReference;
 import org.springframework.stereotype.Component;
+import org.ylzl.eden.demo.api.UserService;
 import org.ylzl.eden.demo.domain.user.entity.User;
 
 /**
@@ -16,10 +18,11 @@ import org.ylzl.eden.demo.domain.user.entity.User;
 @Component
 public class InternalUserRpcClient {
 
-//	@DubboReference
-//	private UserSyncService userSyncService;
+	@DubboReference
+	private UserService userService;
 
 	public void syncUser(User user) {
 		log.info("基于 RPC 同步到内部用户系统");
+		userService.getUserById(1L);
 	}
 }

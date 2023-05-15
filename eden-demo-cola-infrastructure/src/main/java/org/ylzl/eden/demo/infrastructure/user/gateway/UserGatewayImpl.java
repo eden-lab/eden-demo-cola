@@ -21,8 +21,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Repository;
 import org.ylzl.eden.demo.domain.user.entity.User;
 import org.ylzl.eden.demo.domain.user.gateway.UserGateway;
-import org.ylzl.eden.demo.infrastructure.user.database.convertor.UserConvertor;
 import org.ylzl.eden.demo.infrastructure.user.database.UserMapper;
+import org.ylzl.eden.demo.infrastructure.user.database.convertor.UserConvertor;
 
 /**
  * 用户领域防腐层实现
