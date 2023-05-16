@@ -177,12 +177,9 @@ dubbo: # 分布式调用组件
     register: true # 是否开启服务注册，设置为 false 表示只订阅不注册
     use-as-config-center: true
     use-as-metadata-center: true
-    group: dubbo
-#  config-center:
-#    address: nacos://${spring.cloud.nacos.discovery.server-addr}?namespace=${spring.cloud.nacos.discovery.namespace}&group=dubbo
-#  metadata-report:
-#    address: nacos://${spring.cloud.nacos.discovery.server-addr}?namespace=${spring.cloud.nacos.discovery.namespace}&group=dubbo
-
+  service:
+    shutdown:
+      wait: 10000
   provider:
     retries: 0 # 重试次数
     timeout: 3000 # 超时时间
