@@ -190,7 +190,6 @@ dubbo: # 分布式调用组件
     timeout: 3000 # 超时时间
     check: false # 是否开启检查
     filter: cat-tracing
-    loadbalance: local-call-first
   consumer:
     retries: 0 # 重试次数
     timeout: 3000 # 超时时间
