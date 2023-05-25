@@ -113,7 +113,7 @@ Configuration:
     AsyncLogger:
       - name: org.ylzl.eden.demo # 应用日志
         level: INFO
-      - name: org.ylzl.eden # 框架调试日志只输出到控制台
+      - name: org.ylzl.eden # 框架日志
         level: DEBUG
       - name: MybatisSqlLog # 输出慢SQL，按需关闭
         level: WARN

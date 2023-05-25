@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.*;
 import org.ylzl.eden.cola.dto.PageResponse;
 import org.ylzl.eden.cola.dto.Response;
 import org.ylzl.eden.cola.dto.SingleResponse;
+import org.ylzl.eden.commons.id.SnowflakeGenerator;
 import org.ylzl.eden.demo.adapter.constant.API;
 import org.ylzl.eden.demo.client.user.api.UserService;
 import org.ylzl.eden.demo.client.user.dto.UserDTO;
@@ -30,6 +31,8 @@ import org.ylzl.eden.demo.client.user.dto.command.UserModifyCmd;
 import org.ylzl.eden.demo.client.user.dto.command.UserRemoveCmd;
 import org.ylzl.eden.demo.client.user.dto.query.UserByIdQry;
 import org.ylzl.eden.demo.client.user.dto.query.UserListByPageQry;
+import org.ylzl.eden.demo.domain.user.entity.User;
+import org.ylzl.eden.demo.infrastructure.user.mq.UserMQProducer;
 
 import javax.validation.Valid;
 
@@ -46,6 +49,8 @@ import javax.validation.Valid;
 public class UserController {
 
 	private final UserService userService;
+
+	private final UserMQProducer userMQProducer;
 
 	/**
 	 * 创建用户
@@ -90,7 +95,9 @@ public class UserController {
 	 */
 	@GetMapping("/{id}")
 	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) {
-		return userService.getUserById(UserByIdQry.builder().id(id).build());
+		SingleResponse<UserDTO> singleResponse = userService.getUserById(UserByIdQry.builder().id(id).build());
+		userMQProducer.send(User.builder().id(SnowflakeGenerator.nextId(1L, 1L)).build());
+		return singleResponse;
 	}
 
 	/**
