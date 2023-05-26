@@ -21,7 +21,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Component;
 import org.ylzl.eden.common.mq.MessageQueueProvider;
 import org.ylzl.eden.common.mq.model.Message;
-import org.ylzl.eden.common.mq.producer.MessageSendCallback;
 import org.ylzl.eden.common.mq.producer.MessageSendResult;
 import org.ylzl.eden.demo.domain.user.entity.User;
 import org.ylzl.eden.spring.framework.json.support.JSONHelper;
@@ -40,18 +39,18 @@ public class UserMQProducer {
 	private final MessageQueueProvider messageQueueProvider;
 
 	public void send(User user) {
-		/*MessageSendResult result =
+		MessageSendResult result =
 			messageQueueProvider.syncSend(Message.builder()
-				.topic("demo-cola-user")
+				.topic("demo-user")
 				.key(String.valueOf(user.getId()))
 				.tags("demo")
 				.delayTimeLevel(2)
 				.body(JSONHelper.json().toJSONString(user)).build());
 
 		log.info("发送消息成功, topic: {}, offset: {}, queueId: {}",
-			result.getTopic(), result.getOffset(), result.getPartition());*/
+			result.getTopic(), result.getOffset(), result.getPartition());
 
-		messageQueueProvider.asyncSend(Message.builder()
+/*		messageQueueProvider.asyncSend(Message.builder()
 				.topic("demo-user")
 				.key(String.valueOf(user.getId()))
 //				.tags("demo")
@@ -69,6 +68,6 @@ public class UserMQProducer {
 				public void onFailed(Throwable e) {
 					log.info("发送消息失败: {}" , e.getMessage(), e);
 				}
-			});
+			});*/
 	}
 }
