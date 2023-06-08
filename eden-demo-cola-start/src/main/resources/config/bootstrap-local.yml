@@ -5,14 +5,14 @@ spring:
         enabled: true # 默认关闭，请按需开启
         server-addr: localhost:8848
         namespace: demo
-        group: eden
+        group: spring-cloud
         username: nacos
         password: nacos
       config: # 配置中心
         enabled: true # 默认关闭，请按需开启
         server-addr: localhost:8848
         namespace: demo
-        group: eden
+        group: spring-cloud
         username: nacos
         password: nacos
         extension-configs:
