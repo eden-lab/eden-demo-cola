@@ -96,7 +96,7 @@ spring:
     bootstrap-servers: 10.2.2.35:9092
   message-queue:
     dynamic:
-      primary: RocketMQ
+      primary: Kafka
 
 rocketmq: # 消息队列
   enabled: true # 默认关闭，请按需开启
