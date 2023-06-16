@@ -93,7 +93,10 @@ spring:
   zipkin: # 链路跟踪
     base-url: http://localhost:9411
   kafka: # 消息队列
-    bootstrap-servers: localhost:9092
+    bootstrap-servers: 10.2.2.35:9092
+  message-queue:
+    dynamic:
+      primary: RocketMQ
 
 rocketmq: # 消息队列
   enabled: true # 默认关闭，请按需开启
