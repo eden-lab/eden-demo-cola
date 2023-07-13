@@ -89,9 +89,19 @@ public class UserController {
 	 * @return
 	 */
 	@GetMapping("/{id}")
-	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) {
+	public SingleResponse<UserDTO> getUserById(@PathVariable Long id) throws TestException {
 		log.info("根据主键 [{}] 获取用户信息", id);
+		if (id == 2L) {
+			throw new TestException("测试");
+		}
 		return userService.getUserById(UserByIdQry.builder().id(id).build());
+	}
+
+	public static class TestException extends Exception {
+
+		public TestException(String message) {
+			super(message);
+		}
 	}
 
 	/**
