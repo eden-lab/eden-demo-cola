@@ -144,9 +144,6 @@ management:
   metrics:
     tags:
       application: ${spring.application.name}
-  health:
-    dubbo:
-      enabled: ${dubbo.enabled}
 
 logging:
   access:
